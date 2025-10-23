@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy B'day My Radha💕🌍</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #e4a5c8, #d9a8a8);
+            min-height: 100vh;
+            overflow-x: hidden;
+            color: #333;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 680px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: rgb(97, 24, 24);
+            position: relative;
+            background: linear-gradient(135deg, #d6808e, #e76ea0);
+            overflow: hidden;
+            background-image: url("https://i.pinimg.com/736x/a6/c9/3e/a6c93ea7fefcf3f6d2471675d6634b3d.jpg");
+            background-size: cover;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            animation: glow 3s infinite alternate;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+        }
+
+        .hero p {
+            margin-top: 15px;
+            font-size: 1.5rem;
+            max-width: 600px;
+            line-height: 1.6;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 15px #debaba, 0 0 25px pink;
+            }
+
+            to {
+                text-shadow: 0 0 25px rgb(239, 165, 165), 0 0 40px #bf97ab;
+            }
+        }
+
+        /* Floating hearts */
+        .heart {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 20px;
+            animation: floatUp 6s linear infinite;
+        }
+
+        @keyframes floatUp {
+            from {
+                transform: translateY(100vh) scale(0.8);
+                opacity: 1;
+            }
+
+            to {
+                transform: translateY(-10vh) scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        /* Gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            padding: 80px;
+        }
+
+        .gallery-item {
+            width: 100%;
+            height: 300px;
+            perspective: 1000px;
+        }
+
+        .flip-card-inner {
+            width: 100%;
+            height: 100%;
+            transition: transform 1s;
+            transform-style: preserve-3d;
+            position: relative;
+        }
+
+        .gallery-item:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front,
+        .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .flip-card-front img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        .flip-card-back {
+            background: rgb(243, 167, 195);
+            color: #6f0a0a;
+            transform: rotateY(180deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            text-align: center;
+            font-size: 1rem;
+        }
+
+
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            visibility: hidden;
+            opacity: 0;
+            transition: 0.3s;
+        }
+
+        .lightbox.active {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .lightbox img {
+            max-width: 80%;
+            max-height: 80%;
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.6);
+        }
+
+
+        .message {
+            text-align: center;
+            margin: 50px auto;
+            max-width: 700px;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            font-size: 1.3rem;
+            line-height: 1.8;
+            animation: fadeIn 3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            font-size: 1rem;
+            color: #dbd8d8;
+        }
+
+        /* Music Button */
+        #music-btn {
+            position: absolute;
+            bottom: 30px;
+            right: 20px;
+            background: #ff4081;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 50px;
+            color: white;
+            cursor: pointer;
+            font-size: 1rem;
+            box-shadow: 0 5px 15px rgba(186, 1, 1, 0.3);
+            transition: 0.3s;
+        }
+
+        #music-btn:hover {
+            background: #b63d8f;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Hero -->
+    <section class="hero">
+        <h1>Happiest Birthday Battery🌸</h1>
+        <element style="color: rgb(128, 217, 187);">
+            <p>No matter what, I’ll always be with you just the way you are because you are my home❤️(sacchi mein), my
+                heart, my happiness, and mine Radha💕🦚 too.</p>
+        </element>
+        <br>
+        <element style="color: rgb(179, 179, 72);">
+            <p><b>तू ही मेरी जींद, तू ही तक़दीर वे
+                    बन गया राँझा और तू ही मेरी हीर वे,
+                    कैसे बताऊँ तूझे, कितना है प्यार वे
+                    रब दिखता है तुझमें ओ मेरे यार वे</b></p>
+        </element>
+        <element style="color: rgb(228, 228, 159);">
+            <p><b>(wakai mein)</b></p>
+
+            <audio id="bg-music">
+                <source
+                    src="Mahi Aaja Unplugged - Arijit Singh - Full Video  Singh Is Bliing  Akshay Kumar & Amy Jackson-[AudioTrimmer.com].mp3"
+                    type="audio/mpeg">
+                </audio>
+                <button id="music-btn">🎶 Play Music</button>
+        </element>
+
+
+    </section>
+
+
+    <!-- Gallery -->
+    <div class="gallery">
+        <div class="gallery-item">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="pyari.jpeg" alt="Memory 1">
+                </div>
+                <div class="flip-card-back">
+                    <p><b>Ye wali jo photo hai na aapki, aapse zyada pyaar to mujhe is se hai. Ye yellow suit💛 laal
+                            dupatta❤️</b></p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="gallery-item">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="with mom.jpeg" alt="Memory 2">
+                </div>
+                <div class="flip-card-back">
+                    <p><b>Aap is time kyu nahi mili mujhe, maasom si, pyari si💕, ksm allah ki isi time se aapko apne
+                            pyaar
+                            mein gira leta😭<br>(bas ek biscut mein😂)<br>(Btw Mataji hits🔥)</b></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="gallery-item">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="with chacha.jpeg" alt="Memory 3">
+                </div>
+                <div class="flip-card-back">
+                    <p><b>Ohooo papa ke paas aate hi itni serious ho gyi, kaash thodi serious mere liye bhi hoti aap.
+                            Khair chhodiyeee😔.</b></p>
+                </div>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="blacksaree.jpeg" alt="Memory 4">
+                </div>
+                <div class="flip-card-back">
+                    <p><b>Ek to main pehle se hi itna pagal hu aapko leke, upar se aapki masti to dekho black saaree🖤
+                            pehen li
+                            (maybe just maybe agar bhagwan ne meri sunn li or kabhi hum dono saath rahe, to is photo ki
+                            to frame krani hai mujhe❤️)</b></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="gallery-item">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="saree.jpeg" alt="Memory 5">
+                </div>
+                <div class="flip-card-back">
+                    <p><b>Aapka jhumka boht pyaara lag raha hai. Lekin jo maine liye hai aapke liye vo is se bhi zyada
+                            pyaare💗 hai, pta nahi ab tak aapko de bhi paaya hounga ya nahi, vese plan to hai mera milne
+                            ka aapse 15-16-17-18 ko.
+                            (Ab aapki maaya aap hi jaane)🙌🏻</b></p>
+                </div>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="radha.jpeg" alt="Memory 6">
+                </div>
+                <div class="flip-card-back">
+                    <p><b>Raaadheeeyyyy Raaadheeeyyyy<br>
+                            Ye hai meri Radha💕🦚
+                            <br>
+                            (Seriously You are looking so pyari pyari🧿)</b></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="gallery-item">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="greendress.jpeg" alt="Memory 7">
+                </div>
+                <div class="flip-card-back">
+                    <p><b>Aap pehle se hi itne pyaare ho, upar se aapke jo ye baal aagye hai na face pe.
+                            <br>Aaaayeeeeeeee Hayeeeeeeeee🌸</b></p>
+                </div>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="sareee.jpeg" alt="Memory 8">
+                </div>
+                <div class="flip-card-back">
+                    <p><b>Ye wali photo yaad hai aapko, jab aapne pehli baar saare try ki thi or mujhe ye picture bheji
+                            thi, or puch rhi thi "Kaisi lag rahi hu?" I wanna say "Bilkul Meri💕" lekin😭😭</b></p>
+                </div>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="Battery.jpeg" alt="Memory 9">
+                </div>
+                <div class="flip-card-back">
+                    <p><b>Shabd nahi bache hai ab kuch kehne ko, bas acha hi smjh le kuch.
+                            <br>Dumboooooo🐥🫀
+                        </b></p>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div id="container">
+        <div class="box1"></div>
+        <div class="box2"></div>
+        <div class="box4">
+            <p><b>Dekho ab Aapse kya hi chipauu, Pehli Mohhabbat too Mausii Jii hi hain...!!!🥰</b></p>
+        </div>
+    </div>
+
+
+    <!--mummy papa section-->
+    <div id="mummypapa">
+        <div class="box5">
+            <p><b>Areyyyy इन्हें कैसे भूल सकते हैं, ये ही तो है मेरी खुशी का असल कारण💗😭</b></p>
+        </div>
+        <div class="box6">
+
+        </div>
+        <div class="box7">
+            <p><b>अगर ये लोग नहीं होते, तो आप नहीं होती, और अगर आप नहीं होती ना (रो लू थोड़ा सा😭), तो आप मेरी जिंदगी
+                    में
+                    कैसे आती?, और मेरी जिंदगी इतनी प्यारी कैसे होती?🤷🏻 hmmmmmm?</b></p>
+            <p>
+                <element style="color: #dc9dbc;"><b>(Btw Dono pyaare lag rahe hain saath mein💕🧿)</b>
+            </p>
+            <p>
+                <element style="color: #dbd8d8;">
+                    <element style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+                        {Hum bhi lagenge ek din❤️(maybe)}
+            </p>
+        </div>
+
+    </div>
+    <div id="meandher">
+
+        <div class="box8"></div>
+        <div class="box9"></div>
+        <div class="box10"></div>
+        <div class="box11"></div>
+        <div class="box12">
+            <p><b>Bhale ही AI से है लेकिन boht प्यारे लग रहे हैं | 💕</b></p>
+
+        </div>
+
+    </div>
+    <div id="shayari">
+        <div class="box13">
+            <b>
+                <br>
+                <h2><u>Imagination</u></h2>
+                <br>
+                <p>काश तू एक बार तो आये और बोले, मैं हूँ यहाँ,</p><br>
+                <p>ये आँखों में आँसू कैसे, अब मैं हूँ यहाँ,</p><br>
+                <p>अब थोड़ा सा हस्के तो दिखाओ, अब मैं हूँ यहाँ,</p><br>
+                <p>चलो चलो जल्दी से कुछ सुनाओ, अब मैं हूँ यहाँ,</p><br>
+                <p>मन में जो भी हो सोच रहे सब भूल जाओ, अब मैं हूं यहां,</p><br>
+                <p>अब ज़रा थोड़ा तो पास आओ, अब मैं हूँ यहाँ,</p><br>
+                <p>अब भी हो क्या रूठे मुझसे, जब मैं हूं यहां,</p><br>
+                <p>फिर से पहले जैसे होके तो दिखाओ, अब मैं हूँ यहाँ,</p><br>
+                <p>जरा मुझको चैन से सोके तो दिखाओ, अब मैं हूँ यहाँ,</p><br>
+                <p>काश तू एक बार तो आये और बोले मैं हूँ यहाँ!!❤️</p><br>
+
+                <h2><u>Reality</u></h2>
+                <br>
+
+
+                <p>पर अफसोस कभी तू आएगी नहीं,</p><br>
+                <p>अपना हक मुझ पर तू जताएगी नहीं,</p><br>
+                <p>गले से मुझे अपने तू लगाएगी नहीं, </p><br>
+                <p>मेरे उदास होने पर तू मनाएगी नहीं, </p><br>
+                <p>देख मेरी तरफ तू शर्माएगी नहीं, मुस्कुराएगी नहीं, </p><br>
+                <p>मेरे गलती करने पर तू डांट सुनाएगी नहीं, </p><br>
+                <p>कैसा रहा दिन तेरा तू बताएगी नहीं, </p><br>
+                <p>मेरी चोटों पर मरहम तू लगाएगी नहीं, </p><br>
+                <p>करती है प्यार, कभी फिरसे तू बताएगी नहीं, </p><br>
+                <p>अपनी गोद में सिर रख तू सुलायेगी नहीं, </p><br>
+                <p>क्या गले से भी तू लगाएगी नहीं??? </p><br>
+                <p>क्या सच में तू आएगी नहीं??? </p><br>
+                <p>अब अगर आएगी भी तो खुदकी जगह ले पाएगी नहीं!!!!❤️‍🩹🙌🏻 </p><br>
+
+                <p>
+                    <element style="color: #7a225e;">(Tere liye hi likhi hai, or bhi boht hai kabhi fursat se sunaunga)
+                </p>
+            </b>
+        </div>
+    </div>
+
+
+    <div id="home">
+        <div class="box14">
+            <p><b>Ab tu soch rahi hogi maine itni mehnat kyu ki, Apne efforts dikhane ke liye, "Bilkull Nahiiiii" [Vese
+                    7 hazar + line ka code hogya😭]. Aaj tera birthday hai, ye to pta hai sabse pehle maine hi wish kiya
+                    hai tujhe, but maybe last bhi main hi kar raha hu. Shayad main kabhi khaas nahi raha tere liye,
+                    jitna tu mere liye thi/hai...!!❤️ Lekin kabhi kabhi(daily) sochta hu agar hum saath hote to sab kuch
+                    kitna alag hota. Main Khud..., Mera Dil...,🫀 kitna khush raha karta "The Happy Charming Face🥹". Or
+                    rahi baat teri, to tujhe to main humesha hi khush rakhta, Kabhi dukhi nahi hone deta. Aisa nahi hai
+                    ki kabhi teri aankhon mein aanshu nahi aate, Aaate, Bilkul Aaate, Lekin Khushi ke. Samjhiiii
+                    Dumboooooo🐥🫀 </b></p>
+            <p><b>Shayad tu meri hoti to main tujhe duniya ki har khushi dene ki koshish karta... Par lagta hai tujhe
+                    duaaoon mein rakhna hi likha tha. Khair Likha tha, तय tha ya jo bhi hai ye sab bekar ki baatein hai.
+                    I really believes in Mehnat & Efforts💗. Or itna kuch karne ke baad bhi tu mere paas nahi hai na,
+                    toh isme definitely galti meri hi hai. Kahi na Kahi कमी mujhse hi reh gyi hogi. Kya pata tere liye
+                    is se bhi kaafi zyada karna padta ho. Itna to pata chala agar Chaand🌖 Taare✨ todne jaisi kuch
+                    cheejein hoti or main vo todd ke bhi le aata, tu shayad tab bhi nahi aati. I didn't expect anything from you, except a "noooo"🙂. Its Okayyyy,<br> ज़िंदगी
+                    है, अगर सब मिल जाएगा तो चाहत किसकी करेंगे |🙌🏻<br> Aur maine ye surprise teri khushi ke liye banaya
+                    hai bas, kyuki 364 days tumhe log aisa feel karate hai jaise jaante hi na ho, or bday wale din
+                    sudden attention, feel hota hai voh. Toh meri taraf se meri cutie patotie🌸 ko ye chota sa gift, I
+                    always love you Himanshiii Betaa❤️.<br> Or ab bhi tu dil se khush nahi hui na to bekar hai meri
+                    mehnat or bekar hu main nahi, Tuuuuuu... Dumboooooooo💗🌍🧿</b></p>
+        </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <img src="" alt="Expanded view">
+    </div>
+    <!-- Footer -->
+    <footer>
+        Made for you by Sir Pradeep Lodhi | Happy Birthday Madam💕🙌🏻
+    </footer>
+
+    <script>
+        // Floating hearts generator
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerHTML = "💕";
+            heart.style.left = Math.random() * window.innerWidth + "px";
+            heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+            heart.style.animationDuration = (Math.random() * 4 + 3) + "s";
+            document.querySelector(".hero").appendChild(heart);
+
+            setTimeout(() => heart.remove(), 6000);
+        }
+        setInterval(createHeart, 600);
+
+        // Lightbox functionality
+        const galleryImages = document.querySelectorAll(".gallery img");
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImg = lightbox.querySelector("img");
+
+        galleryImages.forEach(img => {
+            img.addEventListener("click", () => {
+                lightbox.classList.add("active");
+                lightboxImg.src = img.src;
+            });
+        });
+
+        lightbox.addEventListener("click", () => {
+            lightbox.classList.remove("active");
+        });
+
+        // Music toggle
+        const music = document.getElementById("bg-music");
+        const musicBtn = document.getElementById("music-btn");
+        let playing = false;
+
+        musicBtn.addEventListener("click", () => {
+            if (playing) {
+                music.pause();
+                musicBtn.innerText = "🎶 Play Music";
+            } else {
+                music.play();
+                musicBtn.innerText = "⏸ Pause Music";
+            }
+            playing = !playing;
+        });
+    </script>
+</body>
+
+</html>
